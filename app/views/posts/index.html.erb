@@ -8,10 +8,20 @@
     	</ul>
   </div>
 </nav>
-<div class="container fondito">
+<div class="container">
+	<% @post.each do |p| %>
 	<div class="row">
 		<div class="col-sm-8">
-		<h1>Hola</h1>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><%= p.titulo %></h3>
+			  </div>
+			  <div class="panel-body">
+			    <%= p.texto %>
+			  </div>
+			</div>
 		</div>
 	</div>
+	<% end %>
+
 </div>
