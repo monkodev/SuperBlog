@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+ 	<div class="container clearfix">
+ 	<img class="logo" src="<%= image_url "monkodevlogo.png" %>">
+ 	<img class="logoblog" src="<%= image_url "logosuperblog.png" %>">
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><a href="#">Nuevo Post</a></li>
+    		<li><a href="#">Salir</a></li>    		
+    	</ul>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+	<p><a class="btn btn-primary btn-sm" href="#" role="button">Volver</a></p>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1 class="centrado"><%= @post.new_record? ? "Nuevo": "Editar" %> Post</h1>
+
+				<% if @post.errors.any? %>
+				  <div class="alert alert-danger">
+				    <ul>
+				    <% @post.errors.full_messages.each do |msg| %>
+				      <li><%= msg %></li>
+				    <% end %>
+				    </ul>
+				  </div>
+				<% end %>
+				<%= form_for @post do |p| %>
+				       <div class="form-group">
+				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Título del Post" %>
+				       </div>
+
+				       <div class="form-group">
+				         <%= p.text_area :texto, class: 'form-control input-lg', placeholder: "Descripción", rows: "10" %>
+				       </div>
+				       <div class="actions text-right">
+				                 <%= p.submit @post.new_record? ? "Nuevo Post" : "Editar Post", class: "btn btn-primary btn-lg btn-block" %>
+				        </div>
+				<% end %>
+		</div>  		
+	</div>
+</div>

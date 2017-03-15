@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.fondito { background-color: rgba(192,192,192,0.5) }
+
+nav {  
+    color: #fff; 
+    height: 75px;
+    font-size: 18px;
+}
+.logo {
+	height:60px;
+	width: 60px;
+	margin-top: 5px;
+}
+.logoblog {
+	height:50px;
+	margin-top: 5px;
+}
+.centrado {
+	text-align: center;
+}
+
