@@ -11,17 +11,16 @@
 <div class="container">
 	<% @post.each do |p| %>
 	<div class="row">
-		<div class="col-sm-8">
-			<div class="panel panel-default">
-			  <div class="panel-heading">
-			    <h3 class="panel-title"><%= p.titulo %></h3>
-			  </div>
-			  <div class="panel-body">
-			    <%= p.texto %>
-			  </div>
-			</div>
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="estiloindex">
+			  <h3><%= p.titulo %> </h3>
+			  <h4><small>Subtext for header</small></h4>
+			  <p><%= p.texto %></p>
+			 </div>
+			 		
 		</div>
 	</div>
 	<% end %>
 
 </div>
+
