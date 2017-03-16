@@ -7,8 +7,9 @@
     			<li><%= link_to "Nuevo Post", new_post_path %></li> 
     			<li><%= link_to "Salir", destroy_user_session_path, method: :delete  %></li> 
     		<% else %>
-       			<% redirect_to posts_path %>
-    		<% end %>	  		
+       			<li><%= link_to "Ingresar", new_user_session_path %></li> 
+    			<li><%= link_to "Registrarse", new_user_registration_path %></li>  
+    		<% end %>		  		
     	</ul>
   </div>
 </nav>
@@ -17,9 +18,7 @@
 	<p><a class="btn btn-primary btn-sm" href="/" role="button">Volver</a></p>
 	</div>
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			<h1 class="centrado"><%= @post.new_record? ? "Nuevo": "Editar" %> Post</h1>
-
+		<div class="col-sm-8 col-sm-offset-2">
 				<% if @post.errors.any? %>
 				  <div class="alert alert-danger">
 				    <ul>
@@ -29,18 +28,8 @@
 				    </ul>
 				  </div>
 				<% end %>
-				<%= form_for @post do |p| %>
-				       <div class="form-group">
-				         <%= p.text_field :titulo, class: 'form-control input-lg', placeholder: "Título del Post" %>
-				       </div>
-
-				       <div class="form-group">
-				         <%= p.text_area :texto, class: 'form-control input-lg', placeholder: "Descripción", rows: "10" %>
-				       </div>
-				       <div class="actions text-right">
-				                 <%= p.submit @post.new_record? ? "Nuevo Post" : "Editar Post", class: "btn btn-primary btn-lg btn-block" %>
-				        </div>
-				<% end %>
+				<h1 class=""><%= @post.titulo %></h1>
+				<p class=""><%= @post.texto %></p>
 		</div>  		
 	</div>
 </div>

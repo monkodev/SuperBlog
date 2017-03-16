@@ -14,19 +14,37 @@
     	</ul>
   </div>
 </nav>
+
+<% flash.each do |name, msg| -%>
+<div class="alert alert-success">
+      <%= content_tag :div, msg, class: name %>
+</div>
+ <% end -%>
+
 <div class="container">
 	<% @post.each do |p| %>
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="estiloindex">
-			  <h3><%= p.titulo %> </h3>
+			  <h3> <%= link_to p.titulo, p %> </h3>
 			  <h4><small>Publicado por <%= p.user.email %> hace alrededor de <%= (Time.now - p.created_at).to_i %></small></h4>
-			  <p><%= p.texto %></p>
-			 </div>
-			 		
+			  <p>
+			  <% if p.texto.size>250 %>
+			  	<%= p.texto[0..250]+"..." %>
+			  <% else %>
+			  	<%= p.texto %>
+			  	<% end %>
+			  	</p>
+			  	
+			  		<span class="glyphicon glyphicon-pencil" aria-hidden="true"><%= link_to 'Editar', edit_post_path(p) %>
+			  		</span>
+			  		<span class="glyphicon glyphicon-trash" aria-hidden="true"><%= link_to 'Eliminar', post_path(p),
+                    	method: :delete, data: { confirm: 'Está seguro que desea eliminar el post?' } %>
+			  		</span>
+			  	
+			 </div>			 		
 		</div>
 	</div>
 	<% end %>
 
 </div>
-
