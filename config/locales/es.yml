@@ -1,0 +1,15 @@
+es:
+  errors:
+    messages:
+      blank: "no puede estar en blanco"
+      invalid: "es inválido"
+      too_short: "es demasiado corto (mínimo 250 caracteres)"
+
+  activerecord:
+    attributes:
+      user:
+        name: "Nombre"
+        password: "Contraseña"
+      post:
+        titulo: "Título"
+        texto: "Texto"

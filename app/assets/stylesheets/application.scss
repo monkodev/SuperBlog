@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html,body{height:100%;}
 nav {  
     color: #fff; 
     height: 75px;
@@ -21,4 +22,17 @@ nav {
 .estiloindex h3{
 	color: #7192D4;
 }
+.negro {
+	background-color: #000;
+	width: 100%;	
+	min-height: 100%;
+	height: 100%;
+}
+.headerlogo {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
 
+.derecha {
+	margin-left: 30px;
+}
