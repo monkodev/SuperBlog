@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :show]
 	def index
-		@post = Post.all
+		@post = Post.order(created_at: :desc)
 	end
 	def new
-		@post = Post.new  
+		@post = current_user.posts.build
 	end
 	def edit
 		@post = Post.find(params[:id])
 	end
 	def create
-		@post = Post.new(post_params)
+		@post = current_user.posts.build(post_params)
 		if @post.save
 			redirect_to posts_path
 		else
