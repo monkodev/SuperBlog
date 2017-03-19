@@ -37,7 +37,30 @@
 		<h4>Comentarios</h4>
 			<% @post.comentarios.each do |comment| %>
 			  <div class="panel panel-default">
-			    
+			    <div class="panel-heading"><%= comment.user.email %> comentó hace 
+			    		<% dife = (Time.now - comment.created_at).to_i %>
+			    		<% if (dife > 31536000) %>
+			    			<%= (dife/31536000).to_i %> años
+			    		<% else %>
+			    			<% if (dife > 2592000) %>
+			    				<%= (dife/2592000).to_i %> meses
+			    				<% else %>
+			    					<% if (dife > 86400) %>
+			    						<%= (dife/86400).to_i %> días
+			    						<% else %>
+			    						<% if (dife > 3600) %>
+			    							<%= (dife/3600).to_i %> horas
+			    						<% else %>
+			    							<% if (dife > 60) %>
+			    							<%= (dife/60).to_i %> minutos
+			    							<% else %>
+			    							<%= dife %> segundos
+			    							<% end %>
+			    						<% end %>
+			    					<% end %>
+			    				<% end %>
+			    		<% end %>
+			    </div>
 			    <div class="panel-body"><%= comment.cuerpo %></div>
 			  </div>
 			<% end %>
