@@ -27,7 +27,31 @@
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="estiloindex">
 			  <h3> <%= link_to p.titulo, p %> </h3>
-			  <h4><small>Publicado por <%= p.user.email %> hace alrededor de <%= (Time.now - p.created_at).to_i %></small></h4>
+			  <h4><small>Publicado por <%= p.user.email %> hace alrededor de 
+			  	<% dife = (Time.now - p.created_at).to_i %>
+			  	<% if (dife > 31536000) %>
+			  		<%= (dife/31536000).to_i %> años
+			  	<% else %>
+			  		<% if (dife > 2592000) %>
+			  			<%= (dife/2592000).to_i %> meses
+			  			<% else %>
+			  				<% if (dife > 86400) %>
+			  					<%= (dife/86400).to_i %> días
+			  					<% else %>
+			  					<% if (dife > 3600) %>
+			  						<%= (dife/3600).to_i %> horas
+			  					<% else %>
+			  						<% if (dife > 60) %>
+			  						<%= (dife/60).to_i %> minutos
+			  						<% else %>
+			  						<%= dife %> segundos
+			  						<% end %>
+			  					<% end %>
+			  				<% end %>
+			  			<% end %>
+			  	<% end %>
+			  	
+			  </small></h4>
 			  <p>
 			  <% if p.texto.size>250 %>
 			  	<%= p.texto[0..250]+"..." %>
@@ -35,13 +59,20 @@
 			  	<%= p.texto %>
 			  	<% end %>
 			  	</p>
-			  	
-			  		<span class="glyphicon glyphicon-pencil" aria-hidden="true"><%= link_to 'Editar', edit_post_path(p) %>
-			  		</span>
-			  		<span class="glyphicon glyphicon-trash" aria-hidden="true"><%= link_to 'Eliminar', post_path(p),
+			  		<% if (current_user==nil) %>
+
+			  		<% else %>
+
+			  		<% if (p.user_id==current_user.id) %>
+			  			<span class="glyphicon glyphicon-pencil" aria-hidden="true"><%= link_to 'Editar', edit_post_path(p) %>
+			  			</span>
+			  			<span class="glyphicon glyphicon-trash" aria-hidden="true"><%= link_to 'Eliminar', post_path(p),
                     	method: :delete, data: { confirm: 'Está seguro que desea eliminar el post?' } %>
-			  		</span>
-			  	
+			  			</span>
+			  			
+			  			
+			  			<% end %>	
+			  		<% end %>			  	
 			 </div>			 		
 		</div>
 	</div>

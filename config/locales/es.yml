@@ -13,3 +13,9 @@ es:
       post:
         titulo: "Título"
         texto: "Texto"
+  devise:
+    sessions:
+      signed_in: 'Bienvenido! Ha ingresado correctamente.'
+      signed_out: 'Hasta Luego! Ha salido correctamente.'
+    registrations:  
+      signed_up: 'Hola! Te has registrado correctamente....Disfruta nuestro blog!!'

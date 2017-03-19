@@ -29,7 +29,7 @@
 				  </div>
 				<% end %>
 				<h1 class=""><%= @post.titulo %></h1>
-				<p class=""><%= @post.texto %></p>
+				<p class=""><%= raw Markdown.new(@post.texto).to_html %></p>
 		</div>  		
 	</div>
 </div>
