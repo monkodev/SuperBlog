@@ -13,6 +13,10 @@ es:
       post:
         titulo: "Título"
         texto: "Texto"
+    errors:
+        messages:
+          not_saved: "No se grabó el registro"
+          taken: "Ya existe un usuario con ese e-mail"
   devise:
     sessions:
       signed_in: 'Bienvenido! Ha ingresado correctamente.'
