@@ -32,4 +32,27 @@
 				<p class=""><%= raw Markdown.new(@post.texto).to_html %></p>
 		</div>  		
 	</div>
+	<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<h4>Comentarios</h4>
+			<% @post.comentarios.each do |comment| %>
+			  <div class="panel panel-default">
+			    
+			    <div class="panel-body"><%= comment.cuerpo %></div>
+			  </div>
+			<% end %>
+			<% if signed_in? %>
+			  <%= form_for [@post, @post.comentarios.build] do |f| %>
+			    <div class="form-group">
+			      <%= f.text_area :cuerpo, class: "form-control", placeholder: "Agregar comentario" %>
+			    </div>
+
+			    <div class="actions text-right">
+			      <%= f.submit "Comentar", class: "btn btn-primary" %>
+			    </div>
+			  <% end %>
+			<% end %>
+
+			</div>
+	</div>
 </div>
