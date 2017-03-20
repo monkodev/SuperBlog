@@ -5,6 +5,12 @@ def create
 
   redirect_to post
 end
+def destroy
+	 @post = Post.find(params[:post_id])
+    @comentario = @post.comentario.find(params[:id])
+    @comentario.destroy
+    redirect_to post_path(@post)
+end
 
 private
   def comentarios_params

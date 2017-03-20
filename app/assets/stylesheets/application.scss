@@ -2,6 +2,10 @@
 @import "bootstrap";
 
 html,body{height:100%; margin-bottom:60px;}
+body {
+	background-image: image-url("fondo13.png");
+	background-repeat: no-repeat;
+}
 nav {  
     color: #fff; 
     height: 75px;
@@ -35,4 +39,7 @@ nav {
 
 .derecha {
 	margin-left: 30px;
+}
+.textomsg {
+	color:red;
 }
