@@ -22,8 +22,10 @@ class PostsController < ApplicationController
 	end
 	def destroy
 		post = Post.find(params[:id])
+		comment = post.comentarios
+        comment.destroy
     	post.destroy
-    	redirect_to posts_path, notice: "El post se eliminó correctamente"
+    	redirect_to posts_path, notice: "El post y los comentarios asociados se eliminaron correctamente"
 	end
 	def update
 		@post = Post.find(params[:id])
